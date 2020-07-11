@@ -1,0 +1,37 @@
+<nz-table #basicTable [nzData]="users$ | async" [nzLoading]="loading">
+  <thead>
+  <tr class="head-row">
+    <th nzFilter="firstName" nzSort nzLocalStorageKey="{{storageKey}}:firstName">First name</th>
+    <th nzFilter="lastName" nzSort nzPlaceHolder="Type user last name"
+        nzLocalStorageKey="{{storageKey}}:lastName">
+      Last name
+    </th>
+    <th nzFilter="havePets" nzFilterType="checkbox" nzPlaceHolder="Have pets" nzSort
+        nzLocalStorageKey="{{storageKey}}:havePets">Have pets
+    </th>
+    <th
+      nzFilter="sex"
+      nzSort
+      nzPlaceHolder="Select sex"
+      [nzSelectItems]="sexes"
+      nzFilterType="select"
+      nzLocalStorageKey="{{storageKey}}:sex">
+      Sex
+    </th>
+    <th nzFilter="birthDate" nzSort nzFilterType="date" nzLocalStorageKey="{{storageKey}}:birthDate">Birth date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let data of basicTable.data"
+    [routerLink]="['/alert-message', data.id]"
+    [ngClass]="{'draft-message': data.isDraft, 'public-message': !data.isDraft}"
+  >
+    <td>{{ data.firstName }}</td>
+    <td>{{ data.lastName }}</td>
+    <td>{{ data.havePets ? 'yes' : 'no' }}</td>
+    <td>{{ data.sex }}</td>
+    <td>{{ data.birthDate }}</td>
+  </tr>
+  </tbody>
+</nz-table>

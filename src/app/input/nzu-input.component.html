@@ -1,0 +1,49 @@
+<span #hide id="hide" *ngIf="type !== 'textarea' && resizable !== undefined"></span>
+<input nz-input
+       [name]="name"
+       *ngIf="basicInputType"
+       (ngModelChange)="writeValue($event)"
+       nzSize="{{nzSize}}"
+       [disabled]="isDisabled"
+       [(ngModel)]="_value"
+       [min]="min"
+       [id]="id"
+       [type]="type"
+       #input
+       [placeholder]="placeholder"
+       [ngClass]="{txt: resizable}"/>
+
+<input nz-input
+       [name]="name"
+       *ngIf="snilsInputType"
+       (ngModelChange)="writeValue($event)"
+       [placeholder]="placeholder"
+       [disabled]="isDisabled"
+       [(ngModel)]="_value"
+       #input
+       [ngClass]="{txt: resizable}"/>
+
+<!--<input nz-input-->
+<!--       [name]="name"-->
+<!--       *ngIf="type === 'number1'"-->
+<!--       nzSize="{{nzSize}}"-->
+<!--       [disabled]="isDisabled"-->
+<!--       [(ngModel)]="_value"-->
+<!--       [id]="id"-->
+<!--       type="text"-->
+<!--       [placeholder]="placeholder"-->
+<!--       #input/>-->
+
+<textarea nz-input
+          [name]="name"
+          *ngIf="type === 'textarea'"
+          nzSize="{{nzSize}}"
+          (ngModelChange)="writeValue($event)"
+          [disabled]="isDisabled"
+          [(ngModel)]="_value"
+          [id]="id"
+          [rows]="rows"
+          #input
+          [placeholder]="placeholder">
+        </textarea>
+

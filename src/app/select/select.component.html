@@ -1,0 +1,17 @@
+<nz-select [nzAllowClear]="allowClear" [nzSize]="_size" (nzOnSearch)="searchQuery$.next($event)"
+           [nzLoading]="loading"
+           [nzShowArrow]="items.length > 1 || (items.length === 1 && items[0] !== _value)"
+           [(ngModel)]="_value" (ngModelChange)="writeValue($event)"
+           [nzNotFoundContent]="notFoundContent"
+           [nzDisabled]="isDisabled" [nzPlaceHolder]="placeholder" [nzShowSearch]="isSearchable">
+  <nz-option [nzCustomContent]="!!itemTemplate"
+             [nzHide]="items.length === 1 && items[0] === _value"
+             *ngFor="let item of items"
+             [nzLabel]="labelField ? item[labelField] : item"
+             [nzValue]="valueField ? item[valueField] : item">
+    <ng-container *ngIf="itemTemplate"
+                  [ngTemplateOutlet]="itemTemplate"
+                  [ngTemplateOutletContext]="{option: item}">
+    </ng-container>
+  </nz-option>
+</nz-select>

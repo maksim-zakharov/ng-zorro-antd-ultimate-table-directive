@@ -1,0 +1,25 @@
+nz-input-number {
+  width: 100%;
+}
+
+:host {
+  width: 100%;
+  display: block;
+
+  &.ng-invalid input {
+    border-color: #f5222d;
+  }
+
+}
+
+.txt {
+  min-width: 1vw;
+  max-width: 98vw;
+}
+
+#hide {
+  position: absolute;
+  height: 0;
+  overflow: hidden;
+  white-space: pre;
+}
